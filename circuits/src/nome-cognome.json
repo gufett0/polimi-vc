@@ -1,0 +1,12 @@
+{
+    "parts": [
+        {
+            "regex_def": "Gentile ",
+            "is_public": false
+        },
+        {
+            "regex_def": "(([A-Z]+) )+",
+            "is_public": true
+        }
+    ]
+}

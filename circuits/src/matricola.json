@@ -1,0 +1,12 @@
+{
+    "parts": [
+        {
+            "regex_def": "\\(",
+            "is_public": false
+        },
+        {
+            "regex_def": "[0-9]{8}",
+            "is_public": true
+        }
+    ]
+}

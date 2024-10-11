@@ -1,0 +1,12 @@
+{
+    "parts": [
+        {
+            "regex_def": "IUV: ",
+            "is_public": false
+        },
+        {
+            "regex_def": "([0-9]+)",
+            "is_public": true
+        }
+    ]
+}

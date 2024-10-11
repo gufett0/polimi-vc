@@ -1,0 +1,133 @@
+Received: from PAXP251MB0671.EURP251.PROD.OUTLOOK.COM (2603:10a6:102:284::10)
+ by AS8P251MB0020.EURP251.PROD.OUTLOOK.COM with HTTPS; Wed, 3 May 2023
+ 16:35:05 +0000
+Received: from GV3P280CA0042.SWEP280.PROD.OUTLOOK.COM (2603:10a6:150:9::34) by
+ PAXP251MB0671.EURP251.PROD.OUTLOOK.COM (2603:10a6:102:284::10) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6340.30; Wed, 3 May 2023 16:35:04 +0000
+Received: from HE1EUR01FT077.eop-EUR01.prod.protection.outlook.com
+ (2603:10a6:150:9:cafe::26) by GV3P280CA0042.outlook.office365.com
+ (2603:10a6:150:9::34) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6363.22 via Frontend
+ Transport; Wed, 3 May 2023 16:35:04 +0000
+Authentication-Results: spf=pass (sender IP is 131.175.12.100)
+ smtp.mailfrom=polimi.it; dkim=pass (signature was verified)
+ header.d=polimi.it;dmarc=pass action=none header.from=polimi.it;compauth=pass
+ reason=100
+Received-SPF: Pass (protection.outlook.com: domain of polimi.it designates
+ 131.175.12.100 as permitted sender) receiver=protection.outlook.com;
+ client-ip=131.175.12.100; helo=smtp.polimi.it; pr=C
+Received: from smtp.polimi.it (131.175.12.100) by
+ HE1EUR01FT077.mail.protection.outlook.com (10.152.0.209) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6363.20 via Frontend Transport; Wed, 3 May 2023 16:35:04 +0000
+Received: from appsrv75 ([10.4.5.36])
+	by smtp.polimi.it (8.14.7/8.14.7) with ESMTP id 343GP1B7046586;
+	Wed, 3 May 2023 18:35:03 +0200
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp.polimi.it 343GP1B7046586
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=polimi.it;
+	s=onpremise; t=1683131703;
+	bh=2lAcMKg7tvEpTyIrBFAyHzwCRVbBvjadu34n4h31K6Y=;
+	h=Date:From:To:Subject:From;
+	b=haamwZpjOgjmW2BqDa3x/djcFK68L2LBt6//vGH9rSF4aZVzyIR46ToBieciIrU9F
+	 t/7K7PE9F325djAIi1tr1rF4qQeTq1/Zfxp2EIMhTPMIkNeS4Mzv7GKFUQoO7V88Oc
+	 UUR5no1N2Q3WkcMNm3czWLn6piW7OC8JTjibydbn0u9MbI4zi9Xj9uTJk2vhie8zCd
+	 xruPaqB/EFQmUZIWdRAF2qIV6JDgi+8rvLlvQW8XLMl6pX43qNFPF3dTajh//oiIdE
+	 /kOIhj9V7emDmMPzplENr3MPoFvk5So37xiF4+4TnJd+1yPa19fyIJni114dsv1iJ1
+	 k2osT9eQ5qmdA==
+Date: Wed, 3 May 2023 18:35:03 +0200 (CEST)
+From: messaggi.automatici@polimi.it
+To: francesco1.carbone@mail.polimi.it
+Message-ID: <1012590344.98910.1683131703589.JavaMail.resin@appsrv75>
+Subject: Ricezione ricevuta telematica (Successo)
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Content-Description: Messaggio TESTUALE
+X-jaf-mailsender-appl: 29790
+X-jaf-mailsender-idpr:
+X-jaf-mailsender-cmsg: 18121382
+Return-Path: messaggi.automatici@polimi.it
+X-MS-Exchange-Organization-ExpirationStartTime: 03 May 2023 16:35:04.5083
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id:
+ 489e950a-bbb9-4bd1-7d2c-08db4bf45948
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 0a17712b-6df3-425d-808e-309df28a5eeb:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ HE1EUR01FT077:EE_|PAXP251MB0671:EE_|AS8P251MB0020:EE_
+X-MS-Exchange-Organization-AuthSource:
+ HE1EUR01FT077.eop-EUR01.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: 489e950a-bbb9-4bd1-7d2c-08db4bf45948
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: -1
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:
+ CIP:131.175.12.100;CTRY:IT;LANG:it;SCL:-1;SRV:;IPV:CAL;SFV:SKN;H:smtp.polimi.it;PTR:smtp.polimi.it;CAT:NONE;SFS:;DIR:INB;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 May 2023 16:35:04.3052
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 489e950a-bbb9-4bd1-7d2c-08db4bf45948
+X-MS-Exchange-CrossTenant-Id: 0a17712b-6df3-425d-808e-309df28a5eeb
+X-MS-Exchange-CrossTenant-AuthSource:
+ HE1EUR01FT077.eop-EUR01.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAXP251MB0671
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:01.3056211
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.6363.022
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(930097);
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?bXEvY3NhYThHbDFCeS9YMVdXSWg5cE5hby9acVMzenYvTzhvNzl1L2JJV3JU?=
+ =?utf-8?B?OG51MmVVZlJmMi9tUURjQVNRS05DdUNnOGVwMW9ZeHE1aEVxWmcyTGt0WDN3?=
+ =?utf-8?B?Uk5qeXpTMDk3N1J5ZHNBTE5kMSthem1GWGRTVHBZcnBqZlZ2MWh2R0oxclFj?=
+ =?utf-8?B?eHlzZWxRYnB3dkRCQlIyYVd3OU5qMzFIM1ExcmswYjlPNG80MWI1ZmYyTFhl?=
+ =?utf-8?B?YWtycjE0d1B2eTBpN0VDaFBtbjJvVUlaZ29YTkZ1QllqQVpab21KWmhyYjRC?=
+ =?utf-8?B?aU4rejB2Skxjd0tlditSODFFaVhaV005bmh0OFJQMDFjZ1RxTmM5SlptbEgv?=
+ =?utf-8?B?SThZUXJPaUpDY2o0Nzh2aExlYUpGZURMY0xwdW9OUnVoSGZVbTFSOVBsZ3Vo?=
+ =?utf-8?B?SHFGMm0yWHBtbXhjQXRRMkZ6bkVEYTRoOVRFY01rQ0NQb082c2toQ3YxUEsx?=
+ =?utf-8?B?UFllT3NERzY5Ukw2Tkp5cnE5ZkNJdWpKdFFYdkNCUHZLT0lDdFFBWFBpUktP?=
+ =?utf-8?B?ZGpnWS85eS9EOTd2UzRYcy9wS2JiTmE4MHBwYlhlWkdjVDllT1k4MWNqcVcw?=
+ =?utf-8?B?VVZ5MWprNzcwQm1hTnVnekdqS1BJS1ErSFIxT1FtVGhHWGFYNm1NUzFRb0g5?=
+ =?utf-8?B?OENYRWxwNmV4cXhLYnlZU2h4ZWpJRUhtbE92Y0ttS2ZEckxEZlBtLzNndEFH?=
+ =?utf-8?B?WkN4cDZrenpXTVV1NUljMmEzemFlT0J3ZGtTMEZyOFVpOEFMQ0NrSWJIcnBm?=
+ =?utf-8?B?NDBobmg3QWRqd3ZoU1ViQzNpdmd5RXlwV2wyN0NSTmpTbXZIWUREazlJSm40?=
+ =?utf-8?B?aHpUTmdpQXFTT2hsakZvMHVXUHh4c2dvVGpnZW1mMm5ZTXRMbUtsQXN1bm95?=
+ =?utf-8?B?czNrdzlHaWNObE9nRTkrdDhHVEZ6TUN3Rk5laERLZkUxV0dES3UzTHRYdlhR?=
+ =?utf-8?B?R0lWN1ZiR0dqeVJlbUtZQ2VnVFJMRTJTM0ljRldJV0NOT2FGWUhDa3V3L2NQ?=
+ =?utf-8?B?ZEFiM2xLSzdBdmgycnV5RklPV0tVNzV5OEcxWFN6cC9xL0xPMFpOb0ZlWkZZ?=
+ =?utf-8?B?WVJzRHlENWtudmZtMUdqK0gvSDcwV3JjanRaTDJBUlVRVkZMTEhrQ2RPdm9y?=
+ =?utf-8?B?aktsdWRzbk55VStCcUtXL3Zxb0dFUlROeUc0MjRmTlRtUTFOR25zWHkxcXVN?=
+ =?utf-8?B?OUtjeHNYMlNaYi91SUdXWmxlTlBETmh1UlEzN0dKcW5zRGRvSDg5RE5zc0xG?=
+ =?utf-8?B?NVdocmVFVmtoZGNDWHlHczJlZ1Mydjh5YXA5d0xaQmpNSjJ6RFBWbE5VdlFK?=
+ =?utf-8?B?NGlvNlpjQzY0V1hvckNoZFUvUnpYOWdZeHZyVzBzM2xtWmtGYmpWTWRVOUpP?=
+ =?utf-8?B?VnVCUk4zSDZYMlNiZFpXdUUwMzZSZ1VSTUtSaDYrT0QvZ01GU0ZIeEtRV0ha?=
+ =?utf-8?B?cHZablJ5NWsvR2RQU3UxQmx2aXdIbU5sTTZDc0pRdTgxTUFsc3RQcWdvRDdJ?=
+ =?utf-8?Q?loGh2CAeURQb0HXKb1jW9CRFb1g?=
+MIME-Version: 1.0
+
+Gentile FRANCESCO CARBONE (10834998),
+
+Confermiamo di aver ricevuto il pagamento con le seguenti coordinate
+
+IUV: 000000090451133
+Importo Euro: 1065.0
+
+Cordiali saluti
+
+--
+
+Dear FRANCESCO CARBONE (10834998),
+
+We confirm that we have received the following payment
+
+IUV: 000000090451133
+Amount Euro: 1065.0
+
+
+Best regards
