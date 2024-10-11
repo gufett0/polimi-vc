@@ -40,7 +40,7 @@ const SOLIDITY_TEMPLATE = path.join(
 );
 const SOLIDITY_VERIFIER_PATH = path.join(
   __dirname,
-  "./Verifier.sol"
+  "../../contracts/Verifier.sol"
 );
 
 function log(...message: any) {
