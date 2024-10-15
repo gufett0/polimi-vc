@@ -3,13 +3,13 @@ import { VerifiableCredential } from '@veramo/core'; // Veramo VC type
 
 // Funzione per creare una Verifiable Credential
 export async function createVC() {
-  const issuer = await agent.didManagerGet({ did: 'did:ethr:your-did' }); // Recupera il DID dell'issuer
+  const userDid = await agent.didManagerGet({ did: 'did:ethr:your-did' }); // DID dell'utente come issuer
 
   const verifiableCredential: VerifiableCredential = await agent.createVerifiableCredential({
     credential: {
-      issuer: { id: issuer.did }, // Utilizza un DID esistente
+      issuer: { id: userDid.did }, // L'utente diventa l'issuer
       credentialSubject: {
-        id: 'did:ethr:subject-did', // Assicurati che questo sia un DID valido
+        id: userDid.did, // L'utente è anche il soggetto della credenziale
         name: 'John Doe',
         matricola: '10123456',
         IUV: '000000123456789',
@@ -17,22 +17,20 @@ export async function createVC() {
         currency: 'EUR',
       },
     },
-    //proofFormat: 'jwt',
     proof: {
-      type: "zkSNARK",
-      proofPurpose: "assertionMethod",
-      created: "2023-10-10T10:00:00Z",
-      verificationMethod: "did:ethr:0x75y...dji#functionsignature",
+      type: "zkSNARK", // Prova zk-SNARK per dimostrare l'asserto
+      proofPurpose: "assertionMethod", // L'utente asserisce la validità della sua dichiarazione
+      created: new Date().toISOString(), // Data di creazione della credenziale
+      verificationMethod: userDid.did, // Il DID dell'utente come metodo di verifica
       proofValue: {
-        pi_a: ["0x123...", "0x456..."],
+        pi_a: ["0x123...", "0x456..."], // La prova zk-SNARK generata dal circuito
         pi_b: [["0x789...", "0xabc..."], ["0xdef...", "0xghi..."]],
         pi_c: ["0x123...", "0x456..."],
         protocol: "groth16",
         curve: "bn128"
       },
-      // Aggiungi i segnali pubblici necessari per la verifica zkSNARK
       publicSignals: [
-        "0x456...", "0x789..." // Sostituisci con i segnali pubblici effettivi del circuito
+        "0x456...", "0x789..." // I segnali pubblici del circuito zk-SNARK
       ],
     },
     save: true,
