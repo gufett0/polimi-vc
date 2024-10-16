@@ -35,8 +35,8 @@ describe("PolimiProofVerifier Contract", function () {
 
   it("Should verify the proof using actual proof.json and public.json", async function () {
     // Ensure the proof and public signals files exist
-    const proofPath = "../../packages/circuits/proofs/proof.json";
-    const publicPath = "../../packages/circuits/proofs/public.json";
+    const proofPath = "../../circuits/proofs/proof.json";
+    const publicPath = "../../circuits/proofs/public.json";
 
     if (!fs.existsSync(proofPath) || !fs.existsSync(publicPath)) {
       throw new Error("Proof or public signal files not found");
