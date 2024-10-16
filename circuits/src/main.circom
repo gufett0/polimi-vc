@@ -25,7 +25,7 @@ template PolimiVC(maxHeaderLength, maxBodyLength, maxMonthBytes, maxYearBytes, n
     signal input dataIndex;
     signal input importoIndex;
     signal input matricolaIndex;
-    signal input IUVIndex;
+    //signal input IUVIndex;
     signal input address;
 
     signal output nome;
