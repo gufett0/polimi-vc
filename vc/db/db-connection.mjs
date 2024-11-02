@@ -9,7 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const dbConnection = new DataSource({
   type: 'sqlite',
-  database: 'veramo.sqlite',
+  database: 'db/veramo.sqlite',
   synchronize: false,
   logging: ['error', 'info', 'warn'],
   entities: Entities,
