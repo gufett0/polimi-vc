@@ -36,7 +36,7 @@ template PolimiVC(maxHeaderLength, maxBodyLength, maxMonthBytes, maxYearBytes, n
     signal output pubkeyHash;
    
 
-    component EV = EmailVerifier(maxHeaderLength, maxBodyLength, n, k, 0, 0, 0);
+    component EV = EmailVerifier(maxHeaderLength, maxBodyLength, n, k, 0, 0, 0, 0);
     EV.emailHeader <== emailHeader;
     EV.pubkey <== pubkey;
     EV.signature <== signature;

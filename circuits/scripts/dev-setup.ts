@@ -40,7 +40,7 @@ const SOLIDITY_TEMPLATE = path.join(
 );
 const SOLIDITY_VERIFIER_PATH = path.join(
   __dirname,
-  "../../contracts/Verifier.sol"
+  "../../contracts/src/Verifier.sol"
 );
 
 function log(...message: any) {
@@ -105,9 +105,7 @@ async function generateKeys(
   // Verification key
   const vKey = await zKey.exportVerificationKey(zKeyPath, console);
   fs.writeFileSync(vKeyPath, JSON.stringify(vKey, null, 2));
-  log(`✓ Verification key exported - ${vKeyPath}`);  
-
-
+  log(`✓ Verification key exported - ${vKeyPath}`);
 
   // Solidity verifier
   const templates = {

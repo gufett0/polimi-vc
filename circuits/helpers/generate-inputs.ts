@@ -15,14 +15,14 @@ export type IVerifierCircuitInputs = {
   dataIndex: string;
   importoIndex: string;
   matricolaIndex: string;
-  IUVIndex: string;
+  //IUVIndex: string;
   address: string;
 };
 
 const FROM_SELECTOR = "from:";
 const DATE_SELECTOR = "date:";
 const NOME_SELECTOR = "Gentile ";
-const IUV_SELECTOR = "IUV: ";
+//const IUV_SELECTOR = "IUV: ";
 const IMPORTO_SELECTOR = "Importo Euro: ";
 const MATRICOLA_SELECTOR = "(";
 
@@ -54,7 +54,7 @@ export async function generateVerifierCircuitInputs(
   const nomeIndex = emailBodyBuffer.indexOf(Buffer.from(NOME_SELECTOR)) + NOME_SELECTOR.length;
 
   // Trova l'indice di "IUV: " nel corpo dell'email
-  const IUVIndex = emailBodyBuffer.indexOf(Buffer.from(IUV_SELECTOR)) + IUV_SELECTOR.length;
+  //const IUVIndex = emailBodyBuffer.indexOf(Buffer.from(IUV_SELECTOR)) + IUV_SELECTOR.length;
 
   // Trova l'indice di "Importo Euro: " nel corpo dell'email
   const importoIndex = emailBodyBuffer.indexOf(Buffer.from(IMPORTO_SELECTOR)) + IMPORTO_SELECTOR.length;
@@ -69,7 +69,7 @@ export async function generateVerifierCircuitInputs(
     dataIndex: dataIndex.toString(),
     importoIndex: importoIndex.toString(),
     matricolaIndex: matricolaIndex.toString(),
-    IUVIndex: IUVIndex.toString(),
+    //IUVIndex: IUVIndex.toString(),
     address,
   };
 }
