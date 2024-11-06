@@ -47,9 +47,9 @@ export function getPolimiDidResolver(): { [method: string]: DIDResolver } {
       verificationMethod: [
         {
           id: `did:emaildomain:polimi.it#key-1`,
-          type: 'EcdsaSecp256k1VerificationKey2018',
+          type: 'RsaVerificationKey2018',
           controller: `did:emaildomain:polimi.it`,
-          publicKeyBase64: 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArrqfB98shqxeHsARHTc7LYDGgzdzhXUa1ByUw2+NZCmeKXk2fDbGCCw6sN5vS9spjhU9gvY8l5ghy840xMo8YispftRf01wf66YeoB+5wk1dERhE5H1DFWMXZ7z7G1/Hp/cXjRO5nWa4dvhFVLckGDk1bFfeelFaalHSTcuW9ZILMXi8SBs9hgou1GPkj2qoJDvqY6vR6qt0ac" "q+REyyY3DEgeIXN2y5ohHTFQerYLg5TWjtzk5MxjLanQSUrS2K50JlKGVLWbAixxFr45byHP1qVVef9vP2WMnnJNJsrETsP4sL1KD5wMftAb+Ri5WDGutC5zixeYWBIw3sg17BpwIDAQAB' 
+          publicKeyPem: `MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoInYVAa6hwoFWbqnI4bJvhurEK3KMdc6fARKLoSj/sXKnjNDgqBzUM9y0lb7Oa2Erxzd2hjjZicF7eaVepobneZqyqxM1TsrJVJbGsHM6lVeFhDFxACIT5iWbooCyA7o/J/1kD7SR78llaInpabdoNCxhhnRfBsoBc1tRV49Q25bWbkQ2EU2wbFyzIBGWzRz0QIplHElxgropOUZqzEGrQfLxO/n00IgGWTldurezUdpqwKUA7PFUPVw3G0JovBXOjyPPcn2Nvps/jYsVGulQfomMX5pc+Ol6rqOTt9QywIVm5I+CJKyJZq4+Hh2IkuZJyRHRYxBCZTEs5ZQelSQBQIDAQAB`
         }
       ],
       authentication: [`did:emaildomain:polimi.it#key-1`],
