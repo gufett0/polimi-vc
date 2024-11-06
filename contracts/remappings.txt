@@ -1,0 +1,3 @@
+forge-std=/Users/checco/Downloads/tesi/date-validator/node_modules/forge-std/src/
+@openzeppelin/contracts=/Users/checco/Downloads/tesi/date-validator/node_modules/@openzeppelin/contracts/
+@zk-email/contracts=/Users/checco/Downloads/tesi/date-validator/node_modules/@zk-email/contracts/
