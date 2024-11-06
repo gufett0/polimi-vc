@@ -13,7 +13,7 @@ export async function createVerifiablePresentation(studentDid: string, studentVC
     const verifiablePresentation: VerifiablePresentation = await agent.createVerifiablePresentation({
       presentation: {
         holder: studentDid,
-        verifiableCredential: [filteredStudentVC, polimiVC], // Usa la VC dello studente filtrata
+        verifiableCredential: [filteredStudentVC,polimiVC], 
       },
       proofFormat: 'jwt',
     });

@@ -1,5 +1,8 @@
 // create-simulated-vc.ts
+import { VerifiableCredential } from '@veramo/core';
 import jwt from 'jsonwebtoken';
+const path = require("path");
+const fs = require("fs");
 
 /**
  * Crea una Verifiable Credential simulata per Polimi.
@@ -9,25 +12,37 @@ import jwt from 'jsonwebtoken';
  * @param dkimPubKey - Chiave pubblica DKIM del dominio
  * @returns Il token JWT rappresentante la VC
  */
-export async function createSimulatedPolimiVC(studentDid: string, email: string, dkimPubKey: string): Promise<string> {
+export async function createSimulatedPolimiVC(studentDid: string, email: string, dkimPubKey: string): Promise<VerifiableCredential> {
   // Struttura della Verifiable Credential
   const polimiVC = {
     "@context": ["https://www.w3.org/2018/credentials/v1"],
     "type": ["VerifiableCredential"],
     "issuer": "did:emaildomain:polimi.it",
     "credentialSubject": {
-    //   "id": studentDid,
+      "id": studentDid,
       "email": email,
-      "dkimPubKey": dkimPubKey,
+      "issuer_dkimPubKey": dkimPubKey,
     },
     "issuanceDate": new Date().toISOString(),
-    "purpose": "Attestazione dell'autenticità dell'email dello studente"
+    "purpose": "Attestazione delle credenziali accademiche con verifica dell’origine istituzionale"
   };
 
   // Firma la VC con una chiave statica (esempio, non usata per la produzione)
-  const privateKey = "chiave-privata-dummy"; // Chiave privata simulata per firma fittizia
-  const jwtToken = jwt.sign(polimiVC, privateKey, { algorithm: 'HS256' });
 
-  console.log('Polimi VC JWT:', jwtToken);
-  return jwtToken;
+  // Leggi la chiave privata nel formato PEM
+  const privateKey = fs.readFileSync(path.resolve(__dirname, 'private_key.pem'), 'utf-8');
+
+  const jwtToken = jwt.sign(polimiVC, privateKey, { algorithm: 'RS256' });
+
+  const polimiVCWithProof = {
+    ...polimiVC, // Mantiene tutti i campi della VC originale
+    proof: {
+      type: "JwtProof2020",
+      jwt: jwtToken // Inserisci il JWT generato
+    }
+  };
+
+  console.log('Polimi VC with Proof:', polimiVCWithProof);
+  return polimiVCWithProof;
+
 }

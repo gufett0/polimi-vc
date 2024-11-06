@@ -38,11 +38,18 @@ describe('Verifiable Credential Creation', () => {
     const studentDid = `did:ethr:sepolia:${wallet.address}`;
 
     const email = 'francesco1.carbone@mail.polimi.it';
-    const dkimPubKey = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArrqfB98shqxeHsARHTc7LYDGgzdzhXUa1ByUw2+NZCmeKXk2fDbGCCw6sN5vS9spjhU9gvY8l5ghy840xMo8YispftRf01wf66YeoB+5wk1dERhE5H1DFWMXZ7z7G1/Hp/cXjRO5nWa4dvhFVLckGDk1bFfeelFaalHSTcuW9ZILMXi8SBs9hgou1GPkj2qoJDvqY6vR6qt0ac" "q+REyyY3DEgeIXN2y5ohHTFQerYLg5TWjtzk5MxjLanQSUrS2K50JlKGVLWbAixxFr45byHP1qVVef9vP2WMnnJNJsrETsP4sL1KD5wMftAb+Ri5WDGutC5zixeYWBIw3sg17BpwIDAQAB';
-
+    const dkimPubKey = `-----BEGIN PUBLIC KEY-----
+    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoInYVAa6hwoFWbqnI4bJ
+    vhurEK3KMdc6fARKLoSj/sXKnjNDgqBzUM9y0lb7Oa2Erxzd2hjjZicF7eaVepob
+    neZqyqxM1TsrJVJbGsHM6lVeFhDFxACIT5iWbooCyA7o/J/1kD7SR78llaInpabd
+    oNCxhhnRfBsoBc1tRV49Q25bWbkQ2EU2wbFyzIBGWzRz0QIplHElxgropOUZqzEG
+    rQfLxO/n00IgGWTldurezUdpqwKUA7PFUPVw3G0JovBXOjyPPcn2Nvps/jYsVGul
+    QfomMX5pc+Ol6rqOTt9QywIVm5I+CJKyJZq4+Hh2IkuZJyRHRYxBCZTEs5ZQelSQ
+    BQIDAQAB
+    -----END PUBLIC KEY-----`
     // Crea il VC di Polimi simulato
-    const polimiVcToken = await createSimulatedPolimiVC(studentDid, email, dkimPubKey);
-    
+    const polimiVc = await createSimulatedPolimiVC(studentDid, email, dkimPubKey);
+    const polimiVcToken = polimiVc.proof.jwt;
     expect(polimiVcToken).to.exist;
 
     // Decodifica il token JWT per verificare i campi
@@ -54,7 +61,7 @@ describe('Verifiable Credential Creation', () => {
     // Verifica il subject del VC di Polimi
     // expect(decodedPolimiVC.payload.credentialSubject.id).to.equal(studentDid);
     expect(decodedPolimiVC.payload.credentialSubject).to.have.property('email', email);
-    expect(decodedPolimiVC.payload.credentialSubject).to.have.property('dkimPubKey', dkimPubKey);
+    expect(decodedPolimiVC.payload.credentialSubject).to.have.property('issuer_dkimPubKey', dkimPubKey);
   });
 });
 
@@ -64,8 +71,15 @@ describe('Verifiable Presentation Creation', () => {
     const wallet = new ethers.Wallet(privateKey);
     const studentDid = `did:ethr:sepolia:${wallet.address}`;
     const email = 'francesco1.carbone@mail.polimi.it';
-    const dkimPubKey = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArrqfB98shqxeHsARHTc7LYDGgzdzhXUa1ByUw2+NZCmeKXk2fDbGCCw6sN5vS9spjhU9gvY8l5ghy840xMo8YispftRf01wf66YeoB+5wk1dERhE5H1DFWMXZ7z7G1/Hp/cXjRO5nWa4dvhFVLckGDk1bFfeelFaalHSTcuW9ZILMXi8SBs9hgou1GPkj2qoJDvqY6vR6qt0ac';
-
+    const dkimPubKey = `-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoInYVAa6hwoFWbqnI4bJ
+vhurEK3KMdc6fARKLoSj/sXKnjNDgqBzUM9y0lb7Oa2Erxzd2hjjZicF7eaVepob
+neZqyqxM1TsrJVJbGsHM6lVeFhDFxACIT5iWbooCyA7o/J/1kD7SR78llaInpabd
+oNCxhhnRfBsoBc1tRV49Q25bWbkQ2EU2wbFyzIBGWzRz0QIplHElxgropOUZqzEG
+rQfLxO/n00IgGWTldurezUdpqwKUA7PFUPVw3G0JovBXOjyPPcn2Nvps/jYsVGul
+QfomMX5pc+Ol6rqOTt9QywIVm5I+CJKyJZq4+Hh2IkuZJyRHRYxBCZTEs5ZQelSQ
+BQIDAQAB
+-----END PUBLIC KEY-----`
     // Simulate Polimi VC
     const polimiVcToken = await createSimulatedPolimiVC(studentDid, email, dkimPubKey);
 
@@ -100,7 +114,14 @@ describe('Verifiable Presentation Creation', () => {
   expect(studentVCJwt.credentialSubject).to.have.property('currency', 'EUR');
   // expect(studentVCJwt.credentialSubject).to.have.property('id', studentDid);
   expect(studentVCJwt.credentialSubject).to.have.property('matricola','10834998'); 
-  expect(studentVCJwt.credentialSubject).to.have.property('amount', '1065')
+  expect(studentVCJwt.credentialSubject).to.have.property('amount', '1065');
+
+  const verifiedVP = await agent.verifyPresentation({
+    presentation: vp
+  });
+
+  // Verifica che la VP sia autentica e non manomessa
+  expect(verifiedVP.verified).toBe(true);
 }
 
   });
