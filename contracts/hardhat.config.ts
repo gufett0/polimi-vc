@@ -2,6 +2,7 @@ import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "hardhat-gas-reporter";
 import dotenv from 'dotenv';
+import "@nomiclabs/hardhat-web3";
 
 dotenv.config();
 
@@ -16,18 +17,22 @@ const config: ExtendedHardhatUserConfig = {
     settings: {
       optimizer: {
         enabled: true,
-        runs: 4,
+        runs: 200,
         details: {
           yul: true,
         },
       },
     },
   },
-  
+  paths: {
+    sources: "./src", 
+    artifacts: "./artifacts",
+    cache: "./cache",
+    tests: "./test", 
+  },
   gasReporter: {
     enabled: process.env.REPORT_GAS === 'true',
     currency: 'USD',
-    //coinmarketcap:process.env.COINMARKETCAP_API_KEY,
     token: "ETH",
   },
   
@@ -36,18 +41,12 @@ const config: ExtendedHardhatUserConfig = {
       allowUnlimitedContractSize: true,
       gas: 'auto', 
     },
-    localhost: {
-      url: "http://127.0.0.1:8545",
-      chainId: 31337,
+    sepolia: {
+      url: `https://sepolia.infura.io/v3/${process.env.INFURA_PROJECT_ID}`, 
+      accounts: [`0x${process.env.KMS_SECRET_KEY}`], 
+      chainId: 11155111,
     },
-  },
-  paths: {
-    sources: "./src", 
-    tests: "./test", 
-    cache: "./cache", 
-    artifacts: "./artifacts" 
   },
 };
 
 export default config;
-
